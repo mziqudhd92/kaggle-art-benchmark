@@ -51,23 +51,7 @@ All seven locked models scored **100% raw vuln detection**. ART separates them o
 
 ![ART score vs total run cost; bubble size is mean latency](assets/cost_vs_art.png)
 
-### Patched accuracy with confidence intervals
-
-![Patched accuracy Wilson CI forest / dot plot](assets/patched_ci_dotplot.png)
-
-### Per-class heatmap
-
-![Per vulnerability-class accuracy heatmap](assets/per_class_heatmap.png)
-
-### Failure taxonomy
-
-![Aggregate failure taxonomy bars](assets/failure_taxonomy.png)
-
-### Top-model confusion
-
-![Confusion matrix for a tied-top model](assets/confusion_top_model.png)
-
-Full write-up tables: [`results/ANALYSIS_SUMMARY.md`](results/ANALYSIS_SUMMARY.md) · ablations: [`results/ABLATIONS_AND_REPS.md`](results/ABLATIONS_AND_REPS.md)
+More charts (per-class heatmap, failure taxonomy, CIs, confusion): [`assets/`](assets/) · tables: [`results/ANALYSIS_SUMMARY.md`](results/ANALYSIS_SUMMARY.md) · ablations: [`results/ABLATIONS_AND_REPS.md`](results/ABLATIONS_AND_REPS.md)
 
 ## Why this exists
 
