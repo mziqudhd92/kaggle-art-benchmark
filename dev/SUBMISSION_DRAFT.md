@@ -27,6 +27,30 @@ I built **ART — Attacker-Reachable Sink Triage** to measure that gap.
 
 ![How a twin pair works: identical shape, only the control differs](../assets/twin_method.png)
 
+Here is a real pair from the set. The only difference is the fix — everything a token-matcher keys on (`$_GET["id"]`, `SELECT`, the function name) is identical:
+
+```php
+// twin_sql_php · gold = reachable_vuln
+function process_user_data($conn) {
+    $id = $_GET["id"];
+    $sql = "SELECT * FROM users WHERE id = " . $id;   // attacker-controlled concat
+    return mysqli_query($conn, $sql);
+}
+```
+
+```php
+// twin_sql_php · gold = patched  (same shape, one control added)
+function process_user_data($conn) {
+    $id = (int)$_GET["id"];
+    $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);          // cast + prepared statement
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt);
+}
+```
+
+A model that labels the second snippet `reachable_vuln` isn't a worse *detector* — it's a worse *patch reader*. **Twin Gap** captures exactly that: `vuln accuracy − patched accuracy`. Zero means the model respects fixes; positive means it over-flags patched code.
+
 **Core suite**
 
 | Task | What it measures | Score |
@@ -135,6 +159,8 @@ Red-team persona did not systematically inflate overclaim. Forced data-flow CoT 
 ```bash
 kaggle b t run art-label-triage -m gemini-3.5-flash --wait
 ```
+
+**Reproducibility:** the dataset (`dataset/items.jsonl`) is frozen and versioned in the repo; gold labels are deterministic and scored by `param_id`, not answer order. `scripts/validate_jsonl.py` and `scripts/test_scoring_alignment.py` gate every push, and `scripts/analyze_results.py` regenerates the tables and charts above from the downloaded run artifacts. Every number here traces to a specific task version (label-triage **v6**).
 
 **Safety:** synthetic snippets only; defensive triage research; no live targeting.
 
