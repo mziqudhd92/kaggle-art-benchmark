@@ -21,6 +21,16 @@ AI models are often like over-eager alarm systems. Show them a dangerous word in
 
 ## Results at a glance (label-triage v6)
 
+**TL;DR — what the numbers mean**
+
+Every model we tested is great at spotting “scary” code. That alone is **not** a win — an alarm that never stops ringing is useless. The useful question is: *after you add the lock, does the model calm down?*
+
+- **Four models** (three Gemini variants + Gemma) get a perfect ART score: they catch the bugs **and** respect the fixes. Gemma does it for about **$0.007** per run — strong triage without the big bill.
+- **Cheaper / smaller models** still find every real bug, but some keep flagging code that was already fixed (worst offender: Haiku’s Twin Gap **0.375** — it missed the lock on ~3 of 8 patched twins). Nano is cheapest but confuses harmless filler for risk.
+- **Why this is good news for builders:** you can rank models by *patch reading*, not hype. If your pipeline uses an LLM to triage security findings, pick a model that respects fixes — or you will drown in false alarms on already-patched code.
+
+**Technical scorecard**
+
 All seven locked models scored **100% raw vuln detection**. ART separates them on **patched twins and controls**.
 
 | Model | ART | Twin Gap | Cost USD | Latency |
