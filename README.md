@@ -143,4 +143,4 @@ Synthetic snippets only; defensive research. Do not target live systems.
 
 ## Credit
 
-Inspired by proof-over-speculation tooling (Iridium); this repository is a standalone Kaggle Community Benchmark under MIT.
+Inspired by proof-over-speculation tooling ([Iridium](https://github.com/mziqudhd92/Iridium)); this repository is a standalone Kaggle Community Benchmark under MIT.
