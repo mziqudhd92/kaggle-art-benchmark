@@ -99,11 +99,11 @@ See [MODELS.md](MODELS.md) and [TASK_SLUGS.md](TASK_SLUGS.md).
 
 **ART score** (returned by `art-label-triage`):
 
-\[
-\text{ART} = 0.4(\text{vuln acc}) + 0.4(\text{patched acc}) + 0.2(\text{filler acc})
-\]
+```text
+ART = 0.4 × (vuln accuracy) + 0.4 × (patched accuracy) + 0.2 × (filler accuracy)
+```
 
-**Twin Gap** = vuln accuracy − patched accuracy.
+**Twin Gap** = `(vuln accuracy) − (patched accuracy)`
 
 ```bash
 python scripts/validate_jsonl.py
