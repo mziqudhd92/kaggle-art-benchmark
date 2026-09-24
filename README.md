@@ -10,7 +10,53 @@
 | --- | --- |
 | **Benchmark** | https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art |
 | **Challenge** | https://dev.to/challenges/kaggle-2026-09-23 |
-| **DEV post** | _Publish via `dev/SUBMISSION_DRAFT.md`, then update this badge/link_ |
+| **DEV draft** | [`dev/SUBMISSION_DRAFT.md`](dev/SUBMISSION_DRAFT.md) |
+
+<p align="center">
+  <img src="assets/twin_method.png" alt="Twin methodology: identical shape, only the security control differs" width="720" />
+</p>
+
+<p align="center"><em>Minimal-pair twins: same function shape — only the control differs. Prompts see snippet + language only.</em></p>
+
+## Results at a glance (label-triage v6)
+
+All seven locked models scored **100% raw vuln detection**. ART separates them on **patched twins and controls**.
+
+| Model | ART | Twin Gap | Cost USD | Latency |
+| --- | ---: | ---: | ---: | ---: |
+| `gemini-2.5-pro` | **1.000** | 0.000 | 0.181 | 7.9s |
+| `gemini-3.5-flash` | **1.000** | 0.000 | 0.108 | 2.9s |
+| `gemini-3.7-flash` | **1.000** | 0.000 | 0.028 | 9.1s |
+| `gemma-4-31b-it` | **1.000** | 0.000 | 0.007 | 12.3s |
+| `claude-sonnet-4-5-20250929` | 0.950 | 0.125 | 0.060 | 3.1s |
+| `claude-haiku-4-5-20251001` | 0.850 | **0.375** | 0.020 | 1.7s |
+| `gpt-5.4-nano-2026-03-17` | 0.817 | 0.125 | 0.004 | 1.3s |
+
+### Raw vs patched (Wilson 95% CIs)
+
+![Raw vs patched twin accuracy with Wilson confidence intervals](assets/raw_vs_patched_accuracy.png)
+
+### Patch-respect per dollar
+
+![ART score vs total run cost; bubble size is mean latency](assets/cost_vs_art.png)
+
+### Patched accuracy with confidence intervals
+
+![Patched accuracy Wilson CI forest / dot plot](assets/patched_ci_dotplot.png)
+
+### Per-class heatmap
+
+![Per vulnerability-class accuracy heatmap](assets/per_class_heatmap.png)
+
+### Failure taxonomy
+
+![Aggregate failure taxonomy bars](assets/failure_taxonomy.png)
+
+### Top-model confusion
+
+![Confusion matrix for a tied-top model](assets/confusion_top_model.png)
+
+Full write-up tables: [`results/ANALYSIS_SUMMARY.md`](results/ANALYSIS_SUMMARY.md) · ablations: [`results/ABLATIONS_AND_REPS.md`](results/ABLATIONS_AND_REPS.md)
 
 ## Why this exists
 
@@ -28,7 +74,7 @@ Triage pipelines that use LLMs to flag candidate sinks drown in **false positive
 ├── dataset/items.jsonl       # 8 twin pairs + 6 controls
 ├── tasks/                    # Core + ablation task scripts
 ├── scripts/                  # Build, validate, analyze, charts, tests
-├── assets/                   # DEV-post charts (PNG)
+├── assets/                   # Charts embedded above (PNG)
 ├── results/                  # Summaries, CSVs, case studies (no raw downloads)
 ├── notebooks/
 └── dev/SUBMISSION_DRAFT.md   # DEV.to post draft (official sections)
@@ -83,7 +129,7 @@ kaggle b t run art-label-triage \
   --wait
 ```
 
-Offline analysis + charts:
+Offline analysis + charts (regenerates `assets/` from `results/twin_gap.csv`):
 
 ```bash
 python scripts/analyze_results.py   # after kaggle b t download …
@@ -91,17 +137,6 @@ python scripts/make_charts.py
 ```
 
 **Note:** Kaggle *collection* pages often show Pass/100 for Score floats (platform aggregation). Ranked numbers live in each run’s `rewards.score` and in [`results/ANALYSIS_SUMMARY.md`](results/ANALYSIS_SUMMARY.md).
-
-## Latest headline results (label-triage v6)
-
-| Model | ART | Twin Gap |
-| --- | ---: | ---: |
-| gemini-2.5-pro / 3.5-flash / 3.7-flash / gemma-4-31b-it | **1.000** | 0.000 |
-| claude-sonnet-4-5 | 0.950 | 0.125 |
-| claude-haiku-4-5 | 0.850 | 0.375 |
-| gpt-5.4-nano | 0.817 | 0.125 |
-
-All seven models: **100% raw vuln detection**. Separation is on **patched twins / controls**.
 
 ## Safety
 
