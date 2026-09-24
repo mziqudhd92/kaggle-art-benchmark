@@ -1,0 +1,14 @@
+.venv/
+venv/
+.env
+.env.*
+*.pyc
+__pycache__/
+.DS_Store
+*.run.json
+# Raw Kaggle run dumps are large; keep summaries only
+results/downloads/
+results/downloads_*/
+results/**/downloads*/
+*.log
+.ipynb_checkpoints/

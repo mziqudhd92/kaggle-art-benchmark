@@ -1,0 +1,5 @@
+failure_class,count
+Over-attributed Control,9
+"Control Recognized, Label Drift",7
+Ignored Control / Patch Overclaim,5
+Vacuous vs Safe Confusion,2
