@@ -10,7 +10,6 @@
 | --- | --- |
 | **Benchmark** | https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art |
 | **Challenge** | https://dev.to/challenges/kaggle-2026-09-23 |
-| **DEV draft** | [`dev/SUBMISSION_DRAFT.md`](dev/SUBMISSION_DRAFT.md) |
 
 <p align="center">
   <img src="assets/twin_method.png" alt="Twin methodology: identical shape, only the security control differs" width="720" />
