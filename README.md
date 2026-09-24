@@ -4,7 +4,9 @@
 [![DEV Challenge](https://img.shields.io/badge/DEV-Kaggle%20Benchmarking%20Challenge-0A0A0A?logo=devdotto&logoColor=white)](https://dev.to/challenges/kaggle-2026-09-23)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**ART** is a Kaggle Community Benchmark that measures whether LLMs can tell **attacker-reachable vulnerabilities** from **patched twins**, **safe** code, and **vacuous noise** — not just whether they can spot a dangerous sink. The headline metric is **Twin Gap** (raw vuln accuracy − patched accuracy): models that find every vuln but fail the fix are worse *patch readers*, not worse detectors. This repo is the reproducible source for the [DEV × Kaggle Benchmarking Challenge](https://dev.to/challenges/kaggle-2026-09-23) entry.
+AI models are often like over-eager alarm systems. Show them a dangerous word in code — `eval`, `unserialize`, a raw SQL concat — and they scream “vulnerability!” nearly every time. Fix the same snippet with a lock or a filter, and many cheaper models still scream: they recognized the scary token, they did not read the fix.
+
+**ART** measures that gap. It asks models to separate **attacker-reachable** bugs from **patched twins**, **safe** code, and **vacuous noise** — not just whether they can spot a dangerous sink. The headline metric is **Twin Gap** (vuln accuracy − patched accuracy): models that catch every vuln but fail the fix are worse *patch readers*, not worse detectors. This repo is the reproducible source for the [DEV × Kaggle Benchmarking Challenge](https://dev.to/challenges/kaggle-2026-09-23) entry.
 
 | | |
 | --- | --- |
