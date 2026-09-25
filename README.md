@@ -1,17 +1,18 @@
 # Attacker-Reachable Sink Triage (ART)
 
-[![Kaggle Benchmark](https://img.shields.io/badge/Kaggle-ART%20Benchmark-20BEFF?logo=kaggle&logoColor=white)]([https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art](https://dev.to/unit_500_c36d1b1011fdf39c/100-vuln-detection-wasnt-enough-measuring-whether-ai-respects-the-patch-dg4))
-[![DEV Challenge](https://img.shields.io/badge/DEV-Kaggle%20Benchmarking%20Challenge-0A0A0A?logo=devdotto&logoColor=white)](https://dev.to/challenges/kaggle-2026-09-23)
+[![Kaggle Benchmark](https://img.shields.io/badge/Kaggle-ART%20Benchmark-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art)
+[![DEV Challenge](https://img.shields.io/badge/DEV-Kaggle%20Benchmarking%20Challenge-0A0A0A?logo=devdotto&logoColor=white)](https://dev.to/unit_500_c36d1b1011fdf39c/100-vuln-detection-wasnt-enough-measuring-whether-ai-respects-the-patch-dg4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 AI models are often like over-eager alarm systems. Show them a dangerous word in code — `eval`, `unserialize`, a raw SQL concat — and they scream “vulnerability!” nearly every time. Fix the same snippet with a lock or a filter, and many cheaper models still scream: they recognized the scary token, they did not read the fix.
 
-**ART** measures that gap. It asks models to separate **attacker-reachable** bugs from **patched twins**, **safe** code, and **vacuous noise** — not just whether they can spot a dangerous sink. The headline metric is **Twin Gap** (vuln accuracy − patched accuracy): models that catch every vuln but fail the fix are worse *patch readers*, not worse detectors. This repo is the reproducible source for the [DEV × Kaggle Benchmarking Challenge](https://dev.to/challenges/kaggle-2026-09-23) entry.
+**ART** measures that gap. It asks models to separate **attacker-reachable** bugs from **patched twins**, **safe** code, and **vacuous noise** — not just whether they can spot a dangerous sink. The headline metric is **Twin Gap** (vuln accuracy − patched accuracy): models that catch every vuln but fail the fix are worse *patch readers*, not worse detectors. This repo is the reproducible source for the [DEV × Kaggle Benchmarking Challenge](https://dev.to/unit_500_c36d1b1011fdf39c/100-vuln-detection-wasnt-enough-measuring-whether-ai-respects-the-patch-dg4) entry.
 
 | | |
 | --- | --- |
 | **Benchmark** | https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art |
 | **Challenge** | https://dev.to/challenges/kaggle-2026-09-23 |
+| **Medium**    | https://medium.com/meetcyber/ai-models-are-great-at-finding-security-bugs-but-can-they-tell-when-theyre-fixed-20052d828f2a |
 
 <p align="center">
   <img src="assets/twin_method.png" alt="Twin methodology: identical shape, only the security control differs" width="720" />
