@@ -1,6 +1,6 @@
 # Attacker-Reachable Sink Triage (ART)
 
-[![Kaggle Benchmark](https://img.shields.io/badge/Kaggle-ART%20Benchmark-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art)
+[![Kaggle Benchmark](https://img.shields.io/badge/Kaggle-ART%20Benchmark-20BEFF?logo=kaggle&logoColor=white)]([https://www.kaggle.com/benchmarks/moranzavdi/attacker-reachable-sink-triage-art](https://dev.to/unit_500_c36d1b1011fdf39c/100-vuln-detection-wasnt-enough-measuring-whether-ai-respects-the-patch-dg4))
 [![DEV Challenge](https://img.shields.io/badge/DEV-Kaggle%20Benchmarking%20Challenge-0A0A0A?logo=devdotto&logoColor=white)](https://dev.to/challenges/kaggle-2026-09-23)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
